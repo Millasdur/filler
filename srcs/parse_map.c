@@ -20,6 +20,7 @@ t_map	init_map(void)
 	map.ymax = -1;
 	map.map = NULL;
 	map.c = 0;
+	map.len = -1;
 	return (map);
 }
 
@@ -37,21 +38,26 @@ t_map	getdim(t_map map, char *line)
 	return (map);
 }
 
-t_map	fill_map(t_map map)
+t_map	update_map(t_map map)
 {
 	int		i;
 	char	*line;
 
 	i = 0;
-	map.map = (char**)ft_memalloc(sizeof(char*) * (map.ymax + 1));
-	while (get_next_line(STDIN_FILENO, &line))
+	if (map.len == -1)
 	{
-		if (!ft_isdigit(*line))
-			break ;
+		map.map = (char**)ft_memalloc(sizeof(char*) * (map.ymax + 1));
+		map.len = map.ymax;
+	}
+	while (i < map.ymax)
+	{
+		get_next_line(STDIN_FILENO, &line);
+		ft_strdel(&map.map[i]);
 		map.map[i] = ft_strdup(line + 4);
 		ft_strdel(&line);
 		i++;
 	}
+	map.tetri = parse_tetri();
 	return (map);
 }
 
@@ -62,15 +68,16 @@ t_map	get_map(t_map map)
 
 	ret = get_next_line(STDIN_FILENO, &line);
 	if (ret && *line == '$')
-	{
 		map.c = (*(line + 10) == '1') ? 'o' : 'x';
-		return (map);
-	}
-	if (map.xmax == -1)
+	ft_strdel(&line);
+	while (get_next_line(STDIN_FILENO, &line))
+	{
 		map = getdim(map, line);
-	ft_strdel(&line);
-	get_next_line(STDIN_FILENO, &line);
-	ft_strdel(&line);
-	map = fill_map(map);
+		ft_strdel(&line);
+		get_next_line(STDIN_FILENO, &line);
+		ft_strdel(&line);
+		map = update_map(map);
+		map = putpart(map);
+	}
 	return (map);
 }

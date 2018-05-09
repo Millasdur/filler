@@ -18,6 +18,7 @@ void	show_map(t_map map)
 	int		j;
 
 	j = 0;
+	ft_printf("xmax :[%d]\nymax :[%d]\n", map.xmax, map.ymax);
 	while (j < map.ymax)
 	{
 		i = 0;
@@ -28,10 +29,18 @@ void	show_map(t_map map)
 
 int		main(void)
 {
+	int		i;
 	t_map	map;
 
+	i = 0;
 	map = init_map();
 	map = get_map(map);
 	show_map(map);
+	while (i < map.ymax)
+	{
+		ft_strdel(&map.map[i]);
+		i++;
+	}
+	free(map.map);
 	return (0);
 }
