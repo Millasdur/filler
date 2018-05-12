@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 16:33:54 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/05 09:16:35 by hlely            ###   ########.fr       */
+/*   Updated: 2018/04/21 16:11:27 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,8 @@ static int	get_len(char *src, t_opt opt, int type)
 	if ((opt.flags & HASH) && (((type == HEX || type == MHEX)
 					&& !ft_strequ(src, "0")) || type == POINT))
 		len -= 2;
-	if (opt.flags & HASH && type == OCT)
-	{
-		if (opt.flags & MINUS)
-		{
-			if (opt.charac >= opt.preci)
-				len -= 1;
-		}
-		else if (opt.preci >= 0 && opt.charac >= opt.preci)
-			len -= 1;
-		else if (opt.preci == 0 && opt.zero)
-			len -= 1;
-		else if (opt.preci == -1 && !opt.zero)
-			len -= 1;
-	}
+	if ((opt.flags & HASH) && type == OCT && !ft_strequ(src, "0"))
+		len -= 1;
 	if ((opt.flags & PLUS) || (opt.flags & SPACE))
 		len -= 1;
 	return (len);

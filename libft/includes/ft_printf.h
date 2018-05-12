@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 13:26:19 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/05 10:39:42 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/12 19:27:11 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include "libft.h"
-# include <wchar.h>
-# include <locale.h>
 
 # define HASH		1
 # define MINUS		2
@@ -43,7 +41,6 @@ typedef struct		s_opt
 	int		i;
 	int		len;
 	int		len2;
-	int		len_tmp;
 	int		positive;
 	int		preci;
 	int		width;
@@ -62,9 +59,8 @@ typedef struct		s_function
 extern t_function	g_function[];
 
 int					ft_printf(char *str, ...);
-int					ft_printf_fd(int fd, char *str, ...);
+int					ft_dprintf(int fd, char *str, ...);
 char				*ft_string(va_list *arg, t_opt *opt);
-char				*ft_bigstring(va_list *arg, t_opt *opt);
 char				*ft_pointer(va_list *arg, t_opt *opt);
 char				*ft_char(va_list *arg, t_opt *opt);
 char				*ft_wchar(va_list *arg, t_opt *opt);
@@ -77,20 +73,14 @@ char				*ft_octal(va_list *arg, t_opt *opt);
 char				*ft_maxioctal(va_list *arg, t_opt *opt);
 char				*ft_minihexa(va_list *arg, t_opt *opt);
 char				*ft_maxihexa(va_list *arg, t_opt *opt);
-char				*ft_binary(va_list *arg, t_opt *opt);
 char				*ft_else(va_list *arg, t_opt *opt);
-
-int					ft_getwint(unsigned int c, unsigned char res[]);
-int					nblen(intmax_t nb);
 
 int					is_converter(char c);
 char				*convert(va_list *arg, char c, char *flags, t_opt *opt);
 
-void				get_attr(va_list *arg, char *str, t_opt *opt);
-int					check_attr(char *str, t_opt *opt);
-int					get_flag(char *str, int flags);
+void				get_attr(char *str, t_opt *opt);
+int					get_flag(char *str);
 
-char				*handle_strwidth(char *src, t_opt opt);
 char				*handle_number_flag(char *src, t_opt *opt, int type);
 char				*handle_hash(char *src, t_opt *opt, int type);
 char				*handle_plus_space(char *src, t_opt *opt, int type);
@@ -100,19 +90,4 @@ uintmax_t			get_unumber(va_list *arg, t_opt opt);
 
 char				*handle_strflag(char *src, t_opt opt);
 char				*handle_charflag(char *src, t_opt opt, int len);
-
-int					conv41(int c, unsigned char res[]);
-int					conv42(int c, unsigned char res[]);
-int					conv43(int c, unsigned char res[]);
-int					conv44(int c, unsigned char res[]);
-int					conv45(int c, unsigned char res[]);
-
-int					conv31(int c, unsigned char res[]);
-int					conv32(int c, unsigned char res[]);
-int					conv33(int c, unsigned char res[]);
-int					conv34(int c, unsigned char res[]);
-int					conv35(int c, unsigned char res[]);
-int					conv36(int c, unsigned char res[]);
-int					conv37(int c, unsigned char res[]);
-int					conv38(int c, unsigned char res[]);
 #endif

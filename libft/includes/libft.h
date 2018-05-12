@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 18:49:34 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/09 14:40:58 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/12 23:31:19 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 # include "ft_printf.h"
-# define BUFF_SIZE 2048
 
+# define BUFF_SIZE 32
 # define BLACK "\033[22;31m"
 # define GREEN "\033[22;32m"
 # define BROWN "\033[22;33m"
@@ -41,6 +42,12 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+typedef struct	s_gnl
+{
+	int			fd;
+	char		buf[BUFF_SIZE + 1];
+}				t_gnl;
+
 void			*ft_memset(void *str, int c, size_t n);
 void			ft_bzero(void *str, size_t n);
 void			*ft_memcpy(void *str1, const void *str2, size_t n);
@@ -49,7 +56,7 @@ void			*ft_memmove(void *str1, const void *str2, size_t n);
 void			*ft_memchr(const void *str, int c, size_t n);
 int				ft_memcmp(const void *str1, const void *str2, size_t n);
 size_t			ft_strlen(const char *str);
-int				ft_tablen(char **tab);
+int				ft_indexof(char *str, char c);
 char			*ft_strdup(const char *s);
 char			*ft_strcpy(char *dest, const char *src);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
@@ -78,8 +85,6 @@ int				ft_match(char *s1, char *s2);
 int				ft_nbdigit(int value, int base);
 int				ft_nb_word(char **tab);
 int				ft_abs(int nb);
-
-int				get_next_line(int fd, char **line);
 
 void			*ft_memalloc(size_t size);
 void			ft_memdel(void **ap);
@@ -141,5 +146,10 @@ void			ft_list_reverse(t_list **begin_list);
 void			ft_list_clear(t_list **begin_list);
 int				ft_list_size(t_list *begin_list);
 t_list			*ft_list_at(t_list *begin_list, unsigned int i);
+
+int				get_next_line(int fd, char **line);
+
+int				ft_tablen(char **tab);
+void			ft_tabdel(char ***tab);
 
 #endif

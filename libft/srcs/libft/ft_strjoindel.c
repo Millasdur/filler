@@ -31,9 +31,10 @@ char	*ft_strjoindel(char *s1, const char *s2)
 		}
 	}
 	else if (!s1 && s2)
-		return (ft_strdup(s2));
-	else if (s1 && !s2)
-		return (s1);
+	{
+		res = ft_strdup(s2);
+		return (res);
+	}
 	return (NULL);
 }
 

@@ -6,7 +6,7 @@
 #    By: hlely <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/12 13:17:54 by hlely             #+#    #+#              #
-#    Updated: 2018/05/09 14:42:15 by hlely            ###   ########.fr        #
+#    Updated: 2018/05/11 18:40:09 by hlely            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,7 @@ AR = ar rc
 PRINTF_NAME = ft_printf.c		\
 			  ft_converter.c	\
 			  ft_number.c		\
-			  ft_percent.c		\
-			  nblen.c			\
 			  ft_unumber.c		\
-			  ft_binary.c		\
 			  ft_octal.c		\
 			  ft_get_attr.c		\
 			  ft_padding.c		\
@@ -32,10 +29,6 @@ PRINTF_NAME = ft_printf.c		\
 			  ft_else.c				\
 			  ft_pointer.c			\
 			  ft_char.c				\
-			  ft_wchar.c			\
-			  conv31.c				\
-			  conv32.c				\
-			  conv4.c				\
 			  ft_strpadding.c		\
 			  ft_charpadding.c		\
 			  ft_flag.c			
@@ -45,19 +38,23 @@ SRC = $(addprefix $(PRINTF_PATH), $(PRINTF_NAME))
 ### LIBFT ###
 LIB_NAME = ft_putchar.c\
 		   ft_epur.c\
+		   ft_puterr.c\
+		   ft_puterrnl.c\
 		   ft_realloc.c\
 		   ft_swapstr.c\
 		   ft_nb_word.c\
 		   ft_list_at.c\
 		   ft_list_size.c\
 		   ft_nbdigit.c\
+		   get_next_line.c\
 		   ft_putnbrcolor.c\
 		   ft_putcolornl.c\
 		   ft_match.c\
-		   get_next_line.c\
 		   ft_putcolor.c\
-		   ft_putcolornl.c\
+		   ft_indexof.c		\
 		   ft_tablen.c\
+		   ft_tabdel.c\
+		   ft_putcolornl.c\
 		   ft_list_reverse.c\
 		   ft_list_sort.c\
 		   ft_issort.c\

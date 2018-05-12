@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string.c                                        :+:      :+:    :+:   */
+/*   ft_puterrnl.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/17 17:35:25 by hlely             #+#    #+#             */
-/*   Updated: 2018/04/19 13:54:22 by hlely            ###   ########.fr       */
+/*   Created: 2017/12/09 16:28:19 by hlely             #+#    #+#             */
+/*   Updated: 2017/12/09 17:05:41 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-char		*ft_string(va_list *arg, t_opt *opt)
+void	ft_puterrnl(char *str)
 {
-	char	*res;
+	int		i;
 
-	res = va_arg(*arg, char*);
-	if (res == NULL)
-		res = ft_strdup("(null)");
-	else
-		res = ft_strdup(res);
-	res = handle_strflag(res, *opt);
-	opt->len2 = ft_strlen(res);
-	opt->len += ft_strlen(res);
-	return (res);
+	if (str)
+	{
+		i = 0;
+		while (str[i])
+		{
+			ft_putchare(str[i]);
+			i++;
+		}
+		ft_putchare('\n');
+	}
 }

@@ -6,7 +6,7 @@
 #    By: pchadeni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:57:58 by pchadeni          #+#    #+#              #
-#    Updated: 2018/05/09 16:16:10 by hlely            ###   ########.fr        #
+#    Updated: 2018/05/12 21:47:57 by hlely            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ endif
 
 FILLER = main.c			\
 		 parse_map.c	\
-		 fill_map.c		
+		 fill_map.c		\
+		 put_piece.c	
 
 #------All includes------#
 

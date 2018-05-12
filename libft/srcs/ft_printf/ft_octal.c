@@ -20,7 +20,6 @@ char		*ft_octal(va_list *arg, t_opt *opt)
 	nb = get_unumber(arg, *opt);
 	opt->flags ^= (nb == 0 && opt->preci != 0) ? (opt->flags & HASH) : 0;
 	res = ft_uitoa_base(nb, 8);
-	opt->charac = ft_strlen(res);
 	if (ft_strequ(res, "0") && opt->preci == 0)
 	{
 		ft_strdel(&res);
@@ -41,7 +40,6 @@ char		*ft_maxioctal(va_list *arg, t_opt *opt)
 	nb = get_unumber(arg, *opt);
 	opt->flags ^= (nb == 0 && opt->preci != 0) ? (opt->flags & HASH) : 0;
 	res = ft_uitoa_base(nb, 8);
-	opt->charac = ft_strlen(res);
 	if (ft_strequ(res, "0") && opt->preci == 0)
 	{
 		ft_strdel(&res);

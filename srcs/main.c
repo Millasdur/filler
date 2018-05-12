@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 13:43:22 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/09 16:27:35 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/12 22:54:15 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,21 @@ void	show_map(t_map map)
 	while (j < map.ymax)
 	{
 		i = 0;
-		ft_printf("%s\n", map.map[j]);
+		ft_dprintf(2, "[%2d] %s\n", j, map.map[j]);
+		j++;
+	}
+}
+
+void	show_tetri(t_map map)
+{
+	int		i;
+	int		j;
+
+	j = 0;
+	while (j < map.ty)
+	{
+		i = 0;
+		ft_dprintf(2, "%s\n", map.tetri[j]);
 		j++;
 	}
 }
@@ -34,13 +48,18 @@ int		main(void)
 
 	i = 0;
 	map = init_map();
-	map = get_map(map);
+	if (!get_map(map))
+		return (0);
 	show_map(map);
+<<<<<<< HEAD
+	ft_printf("0 0\n");
+=======
 	while (i < map.ymax)
 	{
 		ft_strdel(&map.map[i]);
 		i++;
 	}
 	free(map.map);
+>>>>>>> 1089c14ab2f6b2c851c8d021a46f718bebdff509
 	return (0);
 }
