@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 13:48:09 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/13 12:22:58 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/13 13:45:27 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int						get_point_weight(t_map *map, int i, int j);
 void					get_best_move(t_map *map);
 void					get_best_piece(t_map *map);
 void					delete_weight_map(t_map *map);
+void					delete_tetri(t_map *map);
 
 void					show_map(t_map map);
 void					show_tetri(t_map map);

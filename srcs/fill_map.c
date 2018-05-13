@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 16:02:26 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/13 13:02:55 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/13 13:58:22 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ static void	get_tetridim(t_map *map, char *line)
 	if (map->tetri)
 		free(map->tetri);
 	map->tetri = NULL;
-	while (line[i] && line[i] != ' ')
+	while (line && line[i] && line[i] != ' ')
 		i++;
 	map->ty = ft_atoi(line + i);
 	i++;
-	while (line[i] && line[i] != ' ')
+	while (line && line[i] && line[i] != ' ')
 		i++;
 	map->tx = ft_atoi(line + i);
 	map->tetri = ft_memalloc(sizeof(char*) * (map->ty + 1));
@@ -43,8 +43,9 @@ t_map		fill_piece(t_map map)
 	while (i < map.ty)
 	{
 		get_next_line(STDIN_FILENO, &line);
-		ft_strdel(&map.tetri[i]);
+		ft_strdel(&(map.tetri[i]));
 		map.tetri[i] = ft_strdup(line);
+		ft_strdel(&line);
 		i++;
 	}
 	/* ft_dprintf(2, "Tetri : \n"); */

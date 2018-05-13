@@ -6,11 +6,24 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 11:11:19 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/13 12:50:19 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/13 13:57:01 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+void		delete_tetri(t_map *map)
+{
+	int		i;
+
+	i = 0;
+	while (i < map->ty)
+	{
+		free(map->tetri[i]);
+		map->tetri[i] = NULL;
+		i++;
+	}
+}
 
 void		print_map_weight(t_map *map)
 {
