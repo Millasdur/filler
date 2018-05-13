@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/12 21:47:24 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/12 23:45:12 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/13 11:00:41 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ int			get_posable_list(t_map *map, char **tetri)
 	i = 0;
 	nb  = 0;
 	/* ft_dprintf(2, "ymax[%d] ty[%d]\n", map->ymax, map->ty); */
-	while (i < map->ymax - map->ty)
+	while (i < map->ymax - map->ty + 1)
 	{
 		j = 0;
-		while (j < map->xmax - map->tx)
+		while (j < map->xmax - map->tx + 1)
 		{
 			if (can_put(map, tetri, i, j))
 			{

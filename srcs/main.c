@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 13:43:22 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/12 22:54:15 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/13 11:02:06 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,6 @@ int		main(void)
 	if (!get_map(map))
 		return (0);
 	show_map(map);
-<<<<<<< HEAD
-	ft_printf("0 0\n");
-=======
-	while (i < map.ymax)
-	{
-		ft_strdel(&map.map[i]);
-		i++;
-	}
 	free(map.map);
->>>>>>> 1089c14ab2f6b2c851c8d021a46f718bebdff509
 	return (0);
 }
