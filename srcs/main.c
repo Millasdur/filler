@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 13:43:22 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/13 11:02:06 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/13 11:48:23 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	show_map(t_map map)
 	int		j;
 
 	j = 0;
-	ft_printf("xmax :[%d]\nymax :[%d]\n", map.xmax, map.ymax);
 	while (j < map.ymax)
 	{
 		i = 0;
@@ -49,8 +48,10 @@ int		main(void)
 	i = 0;
 	map = init_map();
 	if (!get_map(map))
+	{
+		ft_printf("0 0\n");
 		return (0);
+	}
 	show_map(map);
-	free(map.map);
 	return (0);
 }

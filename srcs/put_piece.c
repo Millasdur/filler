@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/12 21:47:24 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/13 11:00:41 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/13 12:50:17 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,13 @@ int			put_piece(t_map *map)
 	/* ft_dprintf(2, "let's put : "); */
 	/* ft_dprintf(2, "[%d %d]\n", */
 	/* 		((t_coord*)map->list->content)->x, ((t_coord*)map->list->content)->y); */
-	ft_printf("%d %d\n",
-			((t_coord*)map->list->content)->x, ((t_coord*)map->list->content)->y);
+	get_best_move(map);
+	ft_printf("%d %d\n", map->x, map->y);
+	/* ft_printf("%d %d\n", */
+	/* 		((t_coord*)map->list->content)->x, ((t_coord*)map->list->content)->y); */
 	/* ft_dprintf(2, "let's del the solutions\n"); */
 	delete_possibilities(&map->list);
+	delete_weight_map(map);
 	/* ft_dprintf(2, "Deleted solutions\n"); */
 	return (1);
 }

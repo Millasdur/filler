@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 15:52:30 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/13 11:07:13 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/13 13:02:52 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ t_map	init_map(void)
 	map.weight = NULL;
 	map.tetri = NULL;
 	map.c = 0;
+	map.e = 0;
+	map.x = 0;
+	map.y = 0;
+	map.best_weight = 0;
 	map.len = -1;
 	return (map);
 }
@@ -68,6 +72,7 @@ int			get_map(t_map map)
 	ft_dprintf(2, "Starting\n");
 	ret = get_next_line(STDIN_FILENO, &line);
 	map.c = (*(line + 10) == '1') ? 'O' : 'X';
+	map.e = (*(line + 10) == '1') ? 'X' : 'O';
 	ft_strdel(&line);
 	while (1)
 	{

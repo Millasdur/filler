@@ -6,7 +6,7 @@
 #    By: pchadeni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:57:58 by pchadeni          #+#    #+#              #
-#    Updated: 2018/05/12 21:47:57 by hlely            ###   ########.fr        #
+#    Updated: 2018/05/13 12:23:26 by hlely            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,10 @@ endif
 FILLER = main.c			\
 		 parse_map.c	\
 		 fill_map.c		\
-		 put_piece.c	
+		 put_piece.c	\
+		 calc_move.c	\
+		 get_weight.c	\
+		 get_best_piece.c	
 
 #------All includes------#
 
