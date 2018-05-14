@@ -6,7 +6,7 @@
 #    By: pchadeni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:57:58 by pchadeni          #+#    #+#              #
-#    Updated: 2018/05/13 12:23:26 by hlely            ###   ########.fr        #
+#    Updated: 2018/05/14 08:42:16 by hlely            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ FILLER = main.c			\
 		 put_piece.c	\
 		 calc_move.c	\
 		 get_weight.c	\
-		 get_best_piece.c	
+		 get_best_piece.c	\
+		 clean_n_store_point.c	
 
 #------All includes------#
 

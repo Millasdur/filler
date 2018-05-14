@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 11:11:19 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/13 13:57:01 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/14 13:34:42 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void		delete_weight_map(t_map *map)
 	map->best_weight = 0;
 	map->x = 0;
 	map->y = 0;
-	map->best_x = 0;
-	map->best_y = 0;
 	map->len = -1;
 }
 

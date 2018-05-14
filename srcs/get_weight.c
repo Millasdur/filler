@@ -6,13 +6,13 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 11:34:42 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/13 16:22:05 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/14 11:26:09 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int			get_horizon_weight(t_map *map, int y, int x, int inc)
+static int	get_horizon_weight(t_map *map, int y, int x, int inc)
 {
 	int		nb;
 	int		inc_tmp;
@@ -29,7 +29,7 @@ int			get_horizon_weight(t_map *map, int y, int x, int inc)
 	return (nb);
 }
 
-int			get_vertical_weight(t_map *map, int y, int x, int inc)
+static int	get_vertical_weight(t_map *map, int y, int x, int inc)
 {
 	int		nb;
 	int		inc_tmp;
@@ -46,7 +46,7 @@ int			get_vertical_weight(t_map *map, int y, int x, int inc)
 	return (nb);
 }
 
-int			get_point_weight(t_map *map, int i, int j, int store)
+int			get_point_weight(t_map *map, int i, int j)
 {
 	int		weight;
 
@@ -55,12 +55,9 @@ int			get_point_weight(t_map *map, int i, int j, int store)
 	weight += get_vertical_weight(map, i, j, -1);
 	weight += get_horizon_weight(map, i, j, 1);
 	weight += get_horizon_weight(map, i, j, -1);
-	if (store && weight > map->best_weight)
-	{
-		map->best_x = i;
-		map->best_y = j;
-		map->best_weight = weight;
-		/* ft_dprintf(2, "Highest point is now [%d][%d]\n", j, i); */
-	}
+	if (weight > map->best_weight)
+		clean_n_store_point(map, i, j, weight);
+	else if (weight == map->best_weight)
+		store_point(map, i, j);
 	return (weight);
 }

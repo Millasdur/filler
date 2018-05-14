@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/12 21:47:24 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/13 13:56:47 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/14 09:06:28 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,15 @@ void		delete_possibilities(t_list **list)
 	{
 		tmp = *list;
 		*list = (*list)->next;
-		free(tmp->content);
-		free(tmp);
+		if (tmp->content)
+			free(tmp->content);
+		if (tmp)
+			free(tmp);
 	}
 	*list = NULL;
 }
 
-int			can_put(t_map *map, char **tetri, int y, int x)
+static int		can_put(t_map *map, char **tetri, int y, int x)
 {
 	int		i;
 	int		j;
@@ -68,7 +70,7 @@ int			can_put(t_map *map, char **tetri, int y, int x)
 	return (nb == 1 ? 1 : 0);
 }
 
-int			get_posable_list(t_map *map, char **tetri)
+static int		get_posable_list(t_map *map, char **tetri)
 {
 	int			i;
 	int			j;
