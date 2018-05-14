@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 11:34:42 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/14 11:26:09 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/14 17:58:18 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	get_vertical_weight(t_map *map, int y, int x, int inc)
 	return (nb);
 }
 
-int			get_point_weight(t_map *map, int i, int j)
+int			get_point_weight(t_map *map, int i, int j, int store)
 {
 	int		weight;
 
@@ -55,9 +55,12 @@ int			get_point_weight(t_map *map, int i, int j)
 	weight += get_vertical_weight(map, i, j, -1);
 	weight += get_horizon_weight(map, i, j, 1);
 	weight += get_horizon_weight(map, i, j, -1);
-	if (weight > map->best_weight)
-		clean_n_store_point(map, i, j, weight);
-	else if (weight == map->best_weight)
-		store_point(map, i, j);
+	if (store)
+	{
+		if (weight > map->best_weight)
+			clean_n_store_point(map, i, j, weight);
+		else if (weight == map->best_weight)
+			store_point(map, i, j);
+	}
 	return (weight);
 }

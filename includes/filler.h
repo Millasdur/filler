@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 13:48:09 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/14 08:52:18 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/14 17:23:15 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int						get_map(t_map map);
 t_map					fill_piece(t_map map);
 
 int						put_piece(t_map *map);
-int						get_point_weight(t_map *map, int i, int j);
+int						get_point_weight(t_map *map, int i, int j, int store);
 
 void					get_best_move(t_map *map);
 void					get_best_piece(t_map *map);

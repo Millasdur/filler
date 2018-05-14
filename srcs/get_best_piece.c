@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 12:12:04 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/14 13:57:42 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/14 17:59:09 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,9 @@ static void	calc_dist(t_map *map, t_coord *poss, t_coord *coord)
 	len = (ft_power(coord->x - poss->x, 2) +
 			ft_power(coord->y - poss->y, 2)) - 
 		4 * ft_power(is_free(map, poss), 2) -
-		4 * ft_power(is_danger(map, coord), 2);
+		4 * ft_power(is_danger(map, coord), 2) -
+		get_point_weight(map, poss->x, poss->y, 0) / 2 -
+		get_free_path(map, poss, coord);
 	if (map->len == -1 || len < map->len)
 	{
 		map->x = poss->x;

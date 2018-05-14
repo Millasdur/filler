@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 11:11:19 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/14 13:34:42 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/14 17:23:07 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		get_map_weight(t_map *map)
 		while (j < map->xmax)
 		{
 			if (map->map[i][j] == map->e)
-				map->weight[i][j] = get_point_weight(map, i, j);
+				map->weight[i][j] = get_point_weight(map, i, j, 1);
 			else
 				map->weight[i][j] = 0;
 			j++;
