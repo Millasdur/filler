@@ -6,7 +6,7 @@
 #    By: pchadeni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:57:58 by pchadeni          #+#    #+#              #
-#    Updated: 2018/05/14 08:42:16 by hlely            ###   ########.fr        #
+#    Updated: 2018/05/15 17:25:30 by hlely            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,8 @@ FILLER = main.c			\
 		 parse_map.c	\
 		 fill_map.c		\
 		 put_piece.c	\
-		 calc_move.c	\
-		 get_weight.c	\
-		 get_best_piece.c	\
-		 clean_n_store_point.c	
+		 calc_len.c		\
+		 delete.c
 
 #------All includes------#
 

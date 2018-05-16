@@ -6,13 +6,13 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:19:55 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/13 13:01:30 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/15 10:19:12 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_power(int n, int p)
+int	ft_pow(int n, int p)
 {
 	int i;
 

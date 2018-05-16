@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 18:49:34 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/12 23:31:19 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/15 10:19:20 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 void			ft_lstaddlast(t_list **alst, t_list *new);
 void			ft_putlst(t_list *lst);
-int				ft_power(int n, int p);
+int				ft_pow(int n, int p);
 int				ft_sqrt(int nb);
 t_list			*ft_strsplitlist(char const *s, char c);
 int				ft_issort(int *tab, int length, int (*f)(int, int));

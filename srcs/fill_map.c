@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 16:02:26 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/13 13:58:22 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/15 17:44:33 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_map		fill_piece(t_map map)
 	get_next_line(STDIN_FILENO, &line);
 	get_tetridim(&map, line);
 	ft_strdel(&line);
-	/* ft_dprintf(2, "Tetri dim : x[%d] y[%d]\n", map.tx, map.ty); */
 	while (i < map.ty)
 	{
 		get_next_line(STDIN_FILENO, &line);
@@ -48,7 +47,5 @@ t_map		fill_piece(t_map map)
 		ft_strdel(&line);
 		i++;
 	}
-	/* ft_dprintf(2, "Tetri : \n"); */
-	/* show_tetri(map); */
 	return (map);
 }
