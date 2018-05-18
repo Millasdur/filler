@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/12 21:47:24 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/15 18:20:10 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/18 14:16:29 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static int		can_put(t_map *map, char **tetri, int y, int x)
 
 	i = 0;
 	nb = 0;
-	while (i < map->ty)
+	while (i < map->ty - map->dy)
 	{
 		j = 0;
-		while (j < map->tx)
+		while (j < map->tx - map->dx)
 		{
 			if (tetri[i][j] == '*')
 			{
@@ -49,6 +49,7 @@ t_coord			new_point(t_map *map, int i, int j)
 	calc_len(map, i, j, &point);
 	point.x = i;
 	point.y = j;
+	point.wei = -1;
 	return (point);
 }
 
@@ -60,11 +61,11 @@ static int		get_posable_list(t_map *map, char **tetri)
 	t_coord		point;
 
 	i = 0;
-	nb  = 0;
-	while (i < map->ymax - map->ty + 1)
+	nb = 0;
+	while (i < map->ymax - map->nty + 1)
 	{
 		j = 0;
-		while (j < map->xmax - map->tx + 1)
+		while (j < map->xmax - map->ntx + 1)
 		{
 			if (can_put(map, tetri, i, j))
 			{
@@ -80,7 +81,7 @@ static int		get_posable_list(t_map *map, char **tetri)
 	return (nb);
 }
 
-int			put_piece(t_map *map)
+int				put_piece(t_map *map)
 {
 	int		nb;
 
@@ -88,11 +89,8 @@ int			put_piece(t_map *map)
 	if (nb == 0)
 		return (0);
 	get_best_move(map);
-	ft_dprintf(2, "LETS PUT %d %d\n", map->x, map->y);
-	ft_printf("%d %d\n", map->x, map->y);
-	ft_dprintf(2, "FIRST PIECE PUT\n");
+	ft_printf("%d %d\n", map->x - map->dy, map->y - map->dx);
 	delete_possibilities(&map->list);
 	delete_tetri(map);
-	ft_dprintf(2, "LET'S GO AGAIN\n");
 	return (1);
 }

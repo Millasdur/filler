@@ -6,31 +6,32 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 15:52:30 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/15 18:30:53 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/18 12:10:05 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-t_map	init_map(void)
+t_map		init_map(void)
 {
 	t_map	map;
 
 	map.xmax = -1;
 	map.ymax = -1;
 	map.map = NULL;
-	map.weight = NULL;
 	map.tetri = NULL;
 	map.c = 0;
 	map.e = 0;
 	map.x = 0;
 	map.y = 0;
-	map.best_weight = 0;
+	map.dx = 0;
+	map.dy = 0;
+	map.wei = 0;
 	map.len = -1;
 	return (map);
 }
 
-t_map	get_mapdim(t_map map, char *line)
+t_map		get_mapdim(t_map map, char *line)
 {
 	int		i;
 
@@ -45,7 +46,7 @@ t_map	get_mapdim(t_map map, char *line)
 	return (map);
 }
 
-t_map	update_map(t_map map)
+t_map		update_map(t_map map)
 {
 	int		i;
 	char	*line;
@@ -61,6 +62,7 @@ t_map	update_map(t_map map)
 		i++;
 	}
 	map.len = -1;
+	map.wei = -1;
 	map.x = 0;
 	map.y = 0;
 	return (map);
@@ -83,7 +85,6 @@ int			get_map(t_map map)
 		get_next_line(STDIN_FILENO, &line);
 		ft_strdel(&line);
 		map = update_map(map);
-		show_map(map);
 		map = fill_piece(map);
 		if (put_piece(&map) == 0)
 			return (0);

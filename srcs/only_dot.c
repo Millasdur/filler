@@ -1,46 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete.c                                           :+:      :+:    :+:   */
+/*   only_dot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/15 17:21:43 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/18 14:13:54 by hlely            ###   ########.fr       */
+/*   Created: 2018/05/17 11:26:27 by hlely             #+#    #+#             */
+/*   Updated: 2018/05/18 14:22:32 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void		delete_tetri(t_map *map)
+int		only_horiz_dot(t_map *map, int y)
+{
+	int		i;
+
+	i = 0;
+	while (map->tetri[y][i])
+	{
+		if (map->tetri[y][i] != '.')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int		only_vert_dot(t_map *map, int x)
 {
 	int		i;
 
 	i = 0;
 	while (i < map->ty)
 	{
-		free(map->tetri[i]);
-		map->tetri[i] = NULL;
+		if (map->tetri[i][x] != '.')
+			return (0);
 		i++;
 	}
-	map->tx = -1;
-	map->ty = -1;
-	map->ntx = 0;
-	map->nty = 0;
-}
-
-void		delete_possibilities(t_list **list)
-{
-	t_list	*tmp;
-
-	while (*list)
-	{
-		tmp = *list;
-		*list = (*list)->next;
-		if (tmp->content)
-			free(tmp->content);
-		if (tmp)
-			free(tmp);
-	}
-	*list = NULL;
+	return (1);
 }

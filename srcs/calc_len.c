@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 17:10:16 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/15 18:45:00 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/18 12:13:33 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ void		calc_len(t_map *map, int y, int x, t_coord *point)
 			if (map->tetri[i][j] == '*')
 			{
 				tiny_loop(map, y + i, x + j, point);
+				point->wei += get_weight(map, y + i, x + j);
 			}
-				j++;
+			j++;
 		}
 		i++;
 	}
@@ -74,6 +75,14 @@ void		get_best_move(t_map *map)
 			map->x = point->x;
 			map->y = point->y;
 			map->len = point->len;
+			map->wei = point->wei;
+		}
+		else if (point->len == map->len && point->wei < map->wei)
+		{
+			map->x = point->x;
+			map->y = point->y;
+			map->len = point->len;
+			map->wei = point->wei;
 		}
 		tmp = tmp->next;
 	}

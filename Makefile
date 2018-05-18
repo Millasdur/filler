@@ -6,7 +6,7 @@
 #    By: pchadeni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:57:58 by pchadeni          #+#    #+#              #
-#    Updated: 2018/05/15 17:25:30 by hlely            ###   ########.fr        #
+#    Updated: 2018/05/18 10:54:02 by hlely            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,9 @@ FILLER = main.c			\
 		 fill_map.c		\
 		 put_piece.c	\
 		 calc_len.c		\
-		 delete.c
+		 delete.c		\
+		 only_dot.c		\
+		 get_weight.c	
 
 #------All includes------#
 
