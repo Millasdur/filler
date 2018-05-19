@@ -6,22 +6,43 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 17:21:43 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/18 14:13:54 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/19 13:22:00 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+void		delete_map(t_map *map)
+{
+	int		i;
+
+	i = 0;
+	if (map->map)
+	{
+		while (i < map->ymax)
+		{
+			ft_strdel(&map->map[i]);
+			i++;
+		}
+		free(map->map);
+		map->map = NULL;
+	}
+}
 
 void		delete_tetri(t_map *map)
 {
 	int		i;
 
 	i = 0;
-	while (i < map->ty)
+	if (map->tetri)
 	{
-		free(map->tetri[i]);
-		map->tetri[i] = NULL;
-		i++;
+		while (i < map->ty)
+		{
+			ft_strdel(&map->tetri[i]);
+			i++;
+		}
+		free(map->tetri);
+		map->tetri = NULL;
 	}
 	map->tx = -1;
 	map->ty = -1;

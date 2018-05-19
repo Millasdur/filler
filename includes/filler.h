@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 13:48:09 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/18 14:12:52 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/19 12:27:48 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,14 @@ typedef struct			s_map
 	char		e;
 	char		**map;
 	char		**tetri;
-	char		**shift;
 	t_list		*list;
-	t_list		*wl;
 	int			len;
 
 }						t_map;
 
 t_map					init_map(void);
-int						get_map(t_map map);
-t_map					fill_piece(t_map map);
+int						get_map(t_map *map);
+int						fill_piece(t_map *map);
 
 int						put_piece(t_map *map);
 
@@ -59,11 +57,8 @@ int						get_weight(t_map *map, int y, int x);
 
 void					calc_len(t_map *map, int y, int x, t_coord *point);
 void					get_best_move(t_map *map);
-void					get_best_piece(t_map *map);
 void					delete_possibilities(t_list **list);
 void					delete_tetri(t_map *map);
-
-void					show_map(t_map map);
-void					show_tetri(t_map map);
+void					delete_map(t_map *map);
 
 #endif

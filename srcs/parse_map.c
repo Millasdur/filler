@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 15:52:30 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/18 15:03:53 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/19 13:16:49 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,44 +31,48 @@ t_map		init_map(void)
 	return (map);
 }
 
-t_map		get_mapdim(t_map map, char *line)
+int			get_mapdim(t_map *map, char *line)
 {
 	int		i;
 
 	i = 0;
 	while (line[i] && !ft_isdigit(line[i]))
 		i++;
-	map.ymax = ft_atoi(line + i);
+	map->ymax = ft_atoi(line + i);
 	while (line[i] && ft_isdigit(line[i]))
 		i++;
-	map.xmax = ft_atoi(line + i);
-	map.map = (char**)ft_memalloc(sizeof(char*) * (map.ymax + 1));
-	return (map);
+	map->xmax = ft_atoi(line + i);
+	map->map = (char**)ft_memalloc(sizeof(char*) * (map->ymax + 1));
+	return (map->map ? 1 : 0);
 }
 
-t_map		update_map(t_map map)
+int			update_map(t_map *map)
 {
 	int		i;
 	char	*line;
 
 	i = 0;
-	while (i < map.ymax)
+	while (i < map->ymax)
 	{
-		get_next_line(STDIN_FILENO, &line);
-		ft_strdel(&map.map[i]);
-		if (line)
-			map.map[i] = ft_strdup(line + 4);
+		if (get_next_line(STDIN_FILENO, &line) == -1 ||
+				!line || (int)ft_strlen(line) != map->xmax + 4)
+		{
+			ft_strdel(&line);
+			return (0);
+		}
+		ft_strdel(&map->map[i]);
+		map->map[i] = ft_strdup(line + 4);
 		ft_strdel(&line);
 		i++;
 	}
-	map.len = -1;
-	map.wei = -1;
-	map.x = 0;
-	map.y = 0;
-	return (map);
+	map->len = -1;
+	map->wei = -1;
+	map->x = 0;
+	map->y = 0;
+	return (1);
 }
 
-int			get_map(t_map map)
+int			get_map(t_map *map)
 {
 	int		ret;
 	char	*line;
@@ -76,22 +80,23 @@ int			get_map(t_map map)
 	ret = get_next_line(STDIN_FILENO, &line);
 	if (ret == -1 || !line || ft_strlen(line) < 12)
 		return (0);
-	map.c = (*(line + 10) == '1') ? 'O' : 'X';
-	map.e = (*(line + 10) == '1') ? 'X' : 'O';
+	map->c = (*(line + 10) == '1') ? 'O' : 'X';
+	map->e = (*(line + 10) == '1') ? 'X' : 'O';
 	ft_strdel(&line);
 	while (1)
 	{
 		ret = get_next_line(STDIN_FILENO, &line);
-		if (ret == -1 || !line)
+		if (ret == -1 || !line || !get_mapdim(map, line))
+		{
+			ft_strdel(&line);
 			return (0);
-		map = map.map == NULL ? get_mapdim(map, line) : map;
+		}
 		ft_strdel(&line);
 		get_next_line(STDIN_FILENO, &line);
 		ft_strdel(&line);
-		map = update_map(map);
-		map = fill_piece(map);
-		if (put_piece(&map) == 0)
+		if (!update_map(map) || !fill_piece(map) || !put_piece(map))
 			return (0);
+		delete_map(map);
 	}
 	return (1);
 }
