@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 15:52:30 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/19 13:16:49 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/21 09:26:38 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int			get_map(t_map *map)
 
 	ret = get_next_line(STDIN_FILENO, &line);
 	if (ret == -1 || !line || ft_strlen(line) < 12)
-		return (0);
+		return (line_error(&line));
 	map->c = (*(line + 10) == '1') ? 'O' : 'X';
 	map->e = (*(line + 10) == '1') ? 'X' : 'O';
 	ft_strdel(&line);
@@ -87,10 +87,7 @@ int			get_map(t_map *map)
 	{
 		ret = get_next_line(STDIN_FILENO, &line);
 		if (ret == -1 || !line || !get_mapdim(map, line))
-		{
-			ft_strdel(&line);
-			return (0);
-		}
+			return (line_error(&line));
 		ft_strdel(&line);
 		get_next_line(STDIN_FILENO, &line);
 		ft_strdel(&line);

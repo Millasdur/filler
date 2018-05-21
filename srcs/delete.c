@@ -6,11 +6,17 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 17:21:43 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/19 13:22:00 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/21 09:25:04 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+int			line_error(char **line)
+{
+	ft_strdel(line);
+	return (0);
+}
 
 void		delete_map(t_map *map)
 {

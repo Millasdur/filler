@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 13:48:09 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/19 12:27:48 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/21 09:25:46 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ void					get_best_move(t_map *map);
 void					delete_possibilities(t_list **list);
 void					delete_tetri(t_map *map);
 void					delete_map(t_map *map);
+
+int						line_error(char **line);
 
 #endif

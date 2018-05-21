@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 16:02:26 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/19 12:41:27 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/21 09:25:27 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	get_tetridim(t_map *map, char *line)
 {
 	int		i;
 
-	if (ft_strncmp(line, "Piece", 5) || !ft_strchr(line, ':'))
+	if (!line || !ft_strchr(line, ':') || ft_strncmp(line, "Piece", 5))
 		return (0);
 	i = 0;
 	map->tetri = NULL;
@@ -107,12 +107,13 @@ int			fill_piece(t_map *map)
 	map->dy = 0;
 	get_next_line(STDIN_FILENO, &line);
 	if (!get_tetridim(map, line))
-		return (0);
+		return (line_error(&line));
 	ft_strdel(&line);
 	while (i < map->ty)
 	{
-		if (get_next_line(STDIN_FILENO, &line) == -1 || !line)
-			return (0);
+		if (get_next_line(STDIN_FILENO, &line) == -1 ||
+				!line || (int)ft_strlen(line) != map->tx)
+			return (line_error(&line));
 		ft_strdel(&(map->tetri[i]));
 		map->tetri[i] = ft_strdup(line);
 		ft_strdel(&line);
