@@ -6,7 +6,7 @@
 /*   By: hlely <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 15:52:30 by hlely             #+#    #+#             */
-/*   Updated: 2018/05/21 09:26:38 by hlely            ###   ########.fr       */
+/*   Updated: 2018/05/23 10:24:45 by hlely            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int			get_map(t_map *map)
 	char	*line;
 
 	ret = get_next_line(STDIN_FILENO, &line);
-	if (ret == -1 || !line || ft_strlen(line) < 12)
+	if (ret == -1 || !line || ft_strlen(line) < 13 ||
+			ft_strncmp(line, "$$$ exec p", 10))
 		return (line_error(&line));
 	map->c = (*(line + 10) == '1') ? 'O' : 'X';
 	map->e = (*(line + 10) == '1') ? 'X' : 'O';
